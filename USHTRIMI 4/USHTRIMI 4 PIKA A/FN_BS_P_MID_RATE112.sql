@@ -1,0 +1,71 @@
+CREATE OR REPLACE FUNCTION FN_BS_P_MID_RATE112 (P_BRANCH_CODE in varchar2, A IN VARCHAR2, B IN VARCHAR2) RETURN NUMBER IS P_MID NUMBER;
+--KY FUNKSION SHERBEN PER TE LLOGARITUR P_MID RATE TE MONEDHAVE TE DREJTPERDREJTA
+
+MON_A VARCHAR2(5);
+MON_B VARCHAR2 (5);
+TAB_A VARCHAR2(5);
+TAB_B VARCHAR2(5);
+N VARCHAR2(5);
+TAB_B1  VARCHAR2(5);
+TEMP NUMBER;
+TEST_rec CYTM_RATES_INTERN%rowtype;
+P_MID1 NUMBER;
+ vSOME_EX EXCEPTION;
+BEGIN
+  MON_A := A;
+    MON_B := B;
+
+dbms_output.put_line('MONEDHAT E PARE ESHTE  ' || MON_A);
+dbms_output.put_line('MONEDHAT E DYTE ESHTE   ' || MON_B);
+-- PER MONEDHAT E MARRA SHKOJME NE TABELE DHE KONTROLLOJME PER REKORDET QE PLOTESOJNE KUSHTET
+--BEJME LOOP PER ARSYE SE KA ME SHUME SE NJE REC ME ATE PERMBAJTEJE
+              FOR I IN (SELECT CYTM_RATES_INTERN.BRANCH_CODE,
+                               CYTM_RATES_INTERN.CCY1,
+                               CYTM_RATES_INTERN.CCY2,
+                               CYTM_RATES_INTERN.RATE_TYPE,
+                               CYTM_RATES_INTERN.MID_RATE,
+                               CYTM_RATES_INTERN.BUY_SPREAD,
+                               CYTM_RATES_INTERN.SALE_SPREAD,
+                               CYTM_RATES_INTERN.BUY_RATE,
+                               CYTM_RATES_INTERN.SALE_RATE,
+                               CYTM_RATES_INTERN.UNAUTH_MID_RATE,
+                               CYTM_RATES_INTERN.UNAUTH_BUY_SPREAD,
+                               CYTM_RATES_INTERN.UNAUTH_SALE_SPREAD,
+                               CYTM_RATES_INTERN.UNAUTH_BUY_RATE,
+                               CYTM_RATES_INTERN.UNAUTH_SALE_RATE,
+                               CYTM_RATES_INTERN.INT_AUTH_STAT,
+                               CYTM_RATES_INTERN.RATE_DATE,
+                               CYTM_RATES_INTERN.RATE_SERIAL,
+                               CYTM_RATES_INTERN.UNAUTH_RATE_DATE,
+                               CYTM_RATES_INTERN.UNAUTH_RATE_SERIAL
+
+            FROM CYTM_RATES_INTERN
+            where( ( CYTM_RATES_INTERN.CCY1 = nvl(MON_A,CCY1)) OR (CYTM_RATES_INTERN.CCY2 = nvl(MON_A,CCY2))  ) AND ( CYTM_RATES_INTERN.RATE_TYPE = 'STANDARD') and ( CYTM_RATES_INTERN.BRANCH_CODE = P_BRANCH_CODE)
+
+      ) LOOP
+      -- RUAJME TE DHENAT E GJETURA NE VARIABLA DHE FILLOJME KONTROLLOJME NEPER KOLONA PER RASTET E KEMBEIMEVE TE MONEDHAVE
+      TAB_A := I.CCY1;
+      TAB_B := I.CCY2;
+         IF  TAB_A = MON_A AND TAB_B = MON_B THEN
+          -- KY ESHTE RASTI ME I DREJTPERDREJT KUR MONEDHAT PERPUTHEN NE POZICIONIN E KOLONAVE
+
+                P_MID1 := I.MID_RATE;
+               RETURN P_MID1;
+
+                end if;
+--KY ESHTE RASTI KUR POZICIONI I MONEDHAVE NUK ESHTE I DREJTPERDREJTE PER KETE ARSYE NE LLOGARISIM KURSIN E ANASJELLTE
+                IF TAB_B = MON_A  AND TAB_A = MON_B THEN
+
+
+                   P_MID1 := 1/ I.MID_RATE;
+                  RETURN P_MID1;
+                   End if;
+
+      END LOOP;
+    P_MID := P_MID1;
+      RETURN P_MID;
+      exception
+    when vsome_ex then
+         raise_application_error(-20000
+                                 , 'KUJDES !');
+      END;
