@@ -1,0 +1,363 @@
+CREATE OR REPLACE PACKAGE BODY stpks_stdush3_custom AS
+     /*-----------------------------------------------------------------------------------------------------
+     **
+     ** File Name  : stpks_stdush3_custom.sql
+     **
+     ** Module     : Static Maintenance
+     ** 
+     ** This source is part of the Oracle FLEXCUBE Software Product.
+     ** Copyright (R) 2008,2022 , Oracle and/or its affiliates.  All rights reserved
+     ** 
+     ** 
+     ** No part of this work may be reproduced, stored in a retrieval system, adopted 
+     ** or transmitted in any form or by any means, electronic, mechanical, 
+     ** photographic, graphic, optic recording or otherwise, translated in any 
+     ** language or computer language, without the prior written permission of 
+     ** Oracle and/or its affiliates. 
+     ** 
+     ** Oracle Financial Services Software Limited.
+     ** Oracle Park, Off Western Express Highway,
+     ** Goregaon (East), 
+     ** Mumbai - 400 063, India
+     ** India
+     -------------------------------------------------------------------------------------------------------
+     CHANGE HISTORY
+     
+     SFR Number         :  
+     Changed By         :  
+     Change Description :  
+     
+     -------------------------------------------------------------------------------------------------------
+     */
+     
+
+   PROCEDURE Dbg(p_msg VARCHAR2)  IS
+      l_Msg     VARCHAR2(32767);
+   BEGIN
+      IF debug.pkg_debug_on <> 2 THEN
+         l_Msg := 'stpks_stdush3_Custom ==>'||p_Msg;
+         Debug.Pr_Debug('ST' ,l_Msg);
+      END IF;
+   END Dbg;
+   
+   PROCEDURE Pr_Log_Error(p_Function_Id in VARCHAR2,p_Source VARCHAR2,p_Err_Code VARCHAR2, p_Err_Params VARCHAR2) IS
+   BEGIN
+      Cspks_Req_Utils.Pr_Log_Error(p_Source,p_Function_Id,p_Err_Code,p_Err_Params);
+   END Pr_Log_Error;
+   PROCEDURE Pr_Skip_Handler(p_Stage in VARCHAR2) IS
+   BEGIN
+      Dbg('In Pr_Skip_Handler..');
+   END Pr_Skip_Handler;
+   FUNCTION fn_Post_build_type_structure (p_Source    IN     VARCHAR2,
+                              p_Source_Operation  IN     VARCHAR2,
+                              p_Function_Id       IN     VARCHAR2,
+                              p_Action_Code       IN     VARCHAR2,
+      p_Child_Function    IN  VARCHAR2,
+      p_Addl_Info       IN Cspks_Req_Global.Ty_Addl_Info,
+      p_stdush3     IN  OUT stpks_stdush3_Main.ty_stdush3,
+      p_Err_Code          IN OUT VARCHAR2,
+      p_Err_Params        IN OUT VARCHAR2)
+   RETURN BOOLEAN
+      IS
+      
+   BEGIN
+
+      Dbg('In Fn_Post_Build_type_structure..');
+
+      Dbg('Returning Success From Fn_Post_Build_Type_Structure');
+      RETURN TRUE;
+   EXCEPTION
+      WHEN OTHERS THEN
+         Debug.Pr_Debug('**','In When Others Of stpks_stdush3_Custom.Fn_Post_Build_type_structure ..');
+         Debug.Pr_Debug('**',SQLERRM);
+         p_Err_Code    := 'ST-OTHR-001';
+         p_Err_Params  := NULL;
+         RETURN FALSE;
+   END Fn_Post_Build_Type_Structure;
+
+   FUNCTION Fn_Pre_Check_Mandatory(p_Source    IN  VARCHAR2,
+                              p_Source_Operation  IN     VARCHAR2,
+                              p_Function_id       IN     VARCHAR2,
+                              p_Action_Code       IN     VARCHAR2,
+      p_Child_Function    IN  VARCHAR2,
+      p_stdush3 IN OUT  stpks_stdush3_Main.Ty_stdush3,
+      p_Err_Code       IN  OUT VARCHAR2,
+      p_Err_Params     IN  OUT VARCHAR2)
+   RETURN BOOLEAN
+
+      IS
+      l_count number  :=0;
+        l_ERROR VARCHAR2(777) := ' nuk lrjohrt rikombinim';
+   BEGIN
+
+      Dbg('In Fn_Pre_Check_Mandatory');
+      if p_Action_Code  = 'NEW' OR p_Action_Code  = 'POPULATE'  THEN
+          
+              if l_count <= 1 then
+              FOR I IN 1..4 LOOP 
+             
+                     p_stdush3.v_sttm_master_sus3.CUST_ID          := bea_sequ2.nextval ;
+                      END LOOP;
+                     else
+                        Pr_Log_Error(p_Function_Id ,p_Source ,'CS-NON01', p_stdush3.v_sttm_master_sus3.CUST_CAT );
+                       end if;
+             END IF;
+
+      Dbg('Returning Success From Fn_Pre_Check_Mandatory..');
+      RETURN TRUE;
+   EXCEPTION
+      WHEN OTHERS THEN
+         Debug.Pr_Debug('**','In When Others of stpks_stdush3_Custom.Fn_Pre_Check_Mandatory ..');
+         Debug.Pr_Debug('**',SQLERRM);
+         p_Err_Code    := 'ST-OTHR-001';
+         p_Err_Params  := NULL;
+         RETURN FALSE;
+   END fn_pre_check_mandatory;
+
+   FUNCTION Fn_Post_Check_Mandatory(p_Source    IN  VARCHAR2,
+                              p_Source_Operation  IN     VARCHAR2,
+                              p_Function_Id       IN     VARCHAR2,
+                              p_Action_Code       IN     VARCHAR2,
+      p_Child_Function    IN  VARCHAR2,
+      p_Pk_Or_Full     IN  VARCHAR2 DEFAULT 'FULL',
+      p_stdush3 IN   stpks_stdush3_Main.ty_stdush3,
+      p_Err_Code       IN  OUT VARCHAR2,
+      p_Err_Params     IN  OUT VARCHAR2)
+   RETURN BOOLEAN
+
+      IS
+   BEGIN
+
+      Dbg('In Fn_Post_Check_Mandatory..');
+
+      Dbg('Returning Success From Fn_Post_Check_Mandatory..');
+      RETURN TRUE;
+   EXCEPTION
+      WHEN OTHERS THEN
+         Debug.Pr_Debug('**','In When Others of stpks_stdush3_Custom.Fn_Post_Check_Mandatory ..');
+         Debug.Pr_Debug('**',SQLERRM);
+         p_Err_Code    := 'ST-OTHR-001';
+         p_Err_Params  := NULL;
+         RETURN FALSE;
+   END Fn_Post_Check_Mandatory;
+
+   FUNCTION Fn_Pre_Default_And_Validate (p_Source    IN  VARCHAR2,
+                              p_Source_Operation  IN     VARCHAR2,
+                              p_Function_Id       IN     VARCHAR2,
+                              p_Action_Code       IN     VARCHAR2,
+      p_Child_Function    IN  VARCHAR2,
+      p_stdush3 IN   stpks_stdush3_Main.ty_stdush3,
+      p_Prev_stdush3 IN OUT stpks_stdush3_Main.ty_stdush3,
+      p_Wrk_stdush3 IN OUT  stpks_stdush3_Main.ty_stdush3,
+      p_Err_Code       IN  OUT VARCHAR2,
+      p_Err_Params     IN  OUT VARCHAR2)
+   RETURN BOOLEAN
+      IS
+   BEGIN
+
+      Dbg('In Fn_Pre_Default_And_Validate..');
+
+      Dbg('Returning Success From fn_pre_default_and_validate..');
+      RETURN TRUE;
+   EXCEPTION
+      WHEN OTHERS THEN
+         Debug.Pr_Debug('**','In When Others of stpks_stdush3_Custom.Fn_Pre_Default_And_Validate ..');
+         Debug.Pr_Debug('**',SQLERRM);
+         p_Err_Code    := 'ST-OTHR-001';
+         p_Err_Params  := NULL;
+         RETURN FALSE;
+   END Fn_Pre_Default_And_Validate;
+
+   FUNCTION Fn_Post_Default_And_Validate (p_Source    IN  VARCHAR2,
+                              p_Source_Operation  IN     VARCHAR2,
+                              p_Function_Id       IN     VARCHAR2,
+                              p_Action_Code       IN     VARCHAR2,
+      p_Child_Function    IN  VARCHAR2,
+      p_stdush3 IN   stpks_stdush3_Main.Ty_stdush3,
+      p_Prev_stdush3 IN OUT stpks_stdush3_Main.Ty_stdush3,
+      p_Wrk_stdush3 IN OUT  stpks_stdush3_Main.Ty_stdush3,
+      p_Err_Code       IN  OUT VARCHAR2,
+      p_Err_Params     IN  OUT VARCHAR2)
+   RETURN BOOLEAN
+      IS
+        L_INDEX NUMBER :=1;
+        l_count number  :=0;
+        l_count1 number  :=0;
+          l_count3 number  :=0;
+      l_ERROR VARCHAR2(777) := ' nuk lrjohrt rikombinim';
+   BEGIN
+
+      Dbg('In Fn_Post_Default_And_Validate..');
+        BEGIN
+
+      Dbg('In Fn_Post_Default_And_Validate..');
+         Dbg('P_ACTIOM'|| p_Action_Code);
+      IF p_Action_Code = 'POPULATE' THEN
+   --KONTROLLOJME ACTION CODIN IF POPULATE ZBRAZIM VLERAT E RUAJTURA 
+   
+   
+         Dbg('P_ACTIOM POP');
+        p_Wrk_stdush3.v_sttm_detail_sus3.delete;
+        p_Prev_stdush3.v_sttm_detail_sus3.delete;
+        --KONTOLLOJME NQS TABELA JONE I KA KETO VLERA APO JO 
+             SELECT  COUNT (*) INTO l_count
+           FROM STTM_DTES2
+           WHERE CUST_TYPE = p_Wrk_stdush3.v_sttm_master_sus3.CUST_TYPE AND CUST_CAT = p_Wrk_stdush3.v_sttm_master_sus3.CUST_CAT;
+           IF l_count > 0 THEN 
+             --NE RAST SE I KA ATEHERE NE MBUSHIM FUSHAT ME VLERAT E GJETURA
+       FOR I IN (SELECT CUST_ID,CUST_CAT,CUST_TYPE, FIELD_DES,MANDATORY_VALIDATION FROM STTM_DTES2 WHERE CUST_TYPE =  p_Wrk_stdush3.v_sttm_master_sus3.CUST_TYPE AND CUST_CAT =  p_Wrk_stdush3.v_sttm_master_sus3.CUST_CAT ) LOOP
+           Dbg('P_ACTIOM LOOP'|| I.FIELD_DES);
+   
+          p_Wrk_stdush3.v_sttm_detail_sus3(L_INDEX).CUST_ID_DET :=   p_stdush3.v_sttm_master_sus3.CUST_ID;
+         p_Wrk_stdush3.v_sttm_detail_sus3(L_INDEX).TEMP := bea_sequ.nextval ;
+          p_Wrk_stdush3.v_sttm_detail_sus3(L_INDEX).FIELD_DES := I.FIELD_DES;
+             p_Wrk_stdush3.v_sttm_detail_sus3(L_INDEX).MANDATORY_VALIDATION := I.MANDATORY_VALIDATION;
+           L_INDEX :=  L_INDEX + 1;
+        
+           END LOOP;
+           
+      
+         else
+         --NE RAST SE NUK GJEN VLERA MERR KETE ERRORIN
+      Pr_Log_Error(p_Function_Id ,p_Source , 'CS-OV001' ,null); 
+           end if;
+          
+              END IF;
+              --KONTROLLOJME NE RAST TE SHTIMEVE MANUALE TE SS
+                   SELECT  COUNT (*) INTO l_count1
+           FROM STTM_DETAIL_SUS3
+           WHERE CUST_ID_DET = p_Wrk_stdush3.v_sttm_master_sus3.CUST_ID;
+           IF l_count1 > l_count THEN 
+              Pr_Log_Error(p_Function_Id ,p_Source , 'CS-OV001' ,null); END IF;
+       end;
+
+      Dbg('Returning Success From Fn_Post_Default_And_Validate..');
+      RETURN TRUE;
+   EXCEPTION
+      WHEN OTHERS THEN
+         Debug.Pr_Debug('**','In When Others of stpks_stdush3_Custom.Fn_Post_Default_And_Validate ..');
+         Debug.Pr_Debug('**',SQLERRM);
+         p_Err_Code    := 'ST-OTHR-001';
+         p_Err_Params  := NULL;
+         RETURN FALSE;
+   END Fn_Post_Default_And_Validate;
+
+   FUNCTION Fn_Pre_Upload_Db (p_Source    IN  VARCHAR2,
+                              p_Source_Operation  IN     VARCHAR2,
+                              p_Function_Id       IN     VARCHAR2,
+                              p_Action_Code       IN     VARCHAR2,
+      p_Child_Function    IN  VARCHAR2,
+      p_Post_Upl_Stat    IN  VARCHAR2,
+      p_Multi_Trip_Id    IN  VARCHAR2,
+      p_stdush3 IN stpks_stdush3_Main.Ty_stdush3,
+      p_Prev_stdush3 IN stpks_stdush3_Main.Ty_stdush3,
+      p_Wrk_stdush3 IN OUT  stpks_stdush3_Main.Ty_stdush3,
+      p_Err_Code       IN  OUT VARCHAR2,
+      p_Err_Params     IN  OUT VARCHAR2)
+   RETURN BOOLEAN
+      IS
+   BEGIN
+
+      Dbg('In Fn_Pre_Upload_Db..');
+
+      Dbg('Returning Success From Fn_Pre_Upload_Db..');
+      RETURN TRUE;
+   EXCEPTION
+      WHEN OTHERS THEN
+         Debug.Pr_Debug('**','In When Others of stpks_stdush3_Custom.Fn_Pre_Upload_Db ..');
+         Debug.Pr_Debug('**',SQLERRM);
+         p_Err_Code    := 'ST-OTHR-001';
+         p_Err_Params  := NULL;
+         RETURN FALSE;
+   END Fn_Pre_Upload_Db;
+
+   FUNCTION Fn_Post_Upload_Db (p_Source    IN  VARCHAR2,
+                              p_Source_Operation  IN     VARCHAR2,
+                              p_Function_Id       IN     VARCHAR2,
+                              p_Action_Code       IN     VARCHAR2,
+      p_Child_Function    IN  VARCHAR2,
+      p_Post_Upl_Stat    IN  VARCHAR2,
+      p_Multi_Trip_Id    IN  VARCHAR2,
+      p_stdush3 IN stpks_stdush3_Main.Ty_stdush3,
+      p_prev_stdush3 IN stpks_stdush3_Main.Ty_stdush3,
+      p_wrk_stdush3 IN OUT  stpks_stdush3_Main.Ty_stdush3,
+      p_Err_Code       IN  OUT VARCHAR2,
+      p_Err_Params     IN  OUT VARCHAR2)
+   RETURN BOOLEAN
+      IS
+   BEGIN
+
+      Dbg('In Fn_Post_Upload_Db..');
+
+      Dbg('Returning Success From Fn_Post_Upload_Db..');
+      RETURN TRUE;
+   EXCEPTION
+      WHEN OTHERS THEN
+         Debug.Pr_Debug('**','In When Others of stpks_stdush3_Custom.Fn_Post_Upload_Db ..');
+         Debug.Pr_Debug('**',SQLERRM);
+         p_Err_Code    := 'ST-OTHR-001';
+         p_Err_Params  := NULL;
+         RETURN FALSE;
+   END Fn_Post_Upload_Db;
+
+   FUNCTION Fn_Pre_Query  ( p_Source    IN  VARCHAR2,
+                              p_Source_Operation  IN     VARCHAR2,
+                              p_Function_Id       IN     VARCHAR2,
+                              p_Action_Code       IN     VARCHAR2,
+      p_Child_Function    IN  VARCHAR2,
+      p_Full_Data     IN  VARCHAR2 DEFAULT 'Y',
+      p_With_Lock     IN  VARCHAR2 DEFAULT 'N',
+      p_QryData_Reqd IN  VARCHAR2 ,
+      p_stdush3 IN   stpks_stdush3_Main.Ty_stdush3,
+      p_Wrk_stdush3 IN OUT   stpks_stdush3_Main.Ty_stdush3,
+      p_Err_Code          IN OUT VARCHAR2,
+      p_Err_Params        IN OUT VARCHAR2)
+   RETURN BOOLEAN
+      IS
+   BEGIN
+
+      Dbg('In Fn_Pre_Query..');
+
+      Dbg('Returning Success From Fn_Pre_Query..');
+      RETURN TRUE;
+   EXCEPTION
+      WHEN OTHERS THEN
+         Debug.Pr_Debug('**','In When Others of stpks_stdush3_Custom.Fn_Pre_Query ..');
+         Debug.Pr_Debug('**',SQLERRM);
+         p_Err_Code    := 'ST-OTHR-001';
+         p_Err_Params  := NULL;
+         RETURN FALSE;
+   END Fn_Pre_Query;
+
+   FUNCTION Fn_Post_Query  ( p_Source    IN  VARCHAR2,
+                              p_Source_Operation  IN     VARCHAR2,
+                              p_Function_Id       IN     VARCHAR2,
+                              p_Action_Code       IN     VARCHAR2,
+      p_Child_Function    IN  VARCHAR2,
+      p_Full_Data     IN  VARCHAR2 DEFAULT 'Y',
+      p_With_Lock     IN  VARCHAR2 DEFAULT 'N',
+      p_QryData_Reqd IN  VARCHAR2 ,
+      p_stdush3 IN   stpks_stdush3_Main.ty_stdush3,
+      p_wrk_stdush3 IN OUT   stpks_stdush3_Main.ty_stdush3,
+      p_Err_Code          IN OUT VARCHAR2,
+      p_err_params        IN OUT VARCHAR2)
+   RETURN BOOLEAN
+      IS
+   BEGIN
+
+      Dbg('In Fn_Post_Query..');
+
+      Dbg('Returning Success From Fn_Post_Query..');
+      RETURN TRUE;
+   EXCEPTION
+      WHEN OTHERS THEN
+         Debug.Pr_Debug('**','In When others of stpks_stdush3_Custom.Fn_Post_Query ..');
+         Debug.Pr_Debug('**',SQLERRM);
+         p_Err_Code    := 'ST-OTHR-001';
+         p_Err_Params  := NULL;
+         RETURN FALSE;
+   END Fn_Post_Query;
+
+
+END stpks_stdush3_custom;
+/

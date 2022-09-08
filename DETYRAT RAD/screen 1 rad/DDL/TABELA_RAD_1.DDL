@@ -1,0 +1,18 @@
+CREATE TABLE STB_MASTER_SUSH1 (
+Group_code varchar2(35),
+TB_Description varchar2(255),
+Exposure_category varchar2(35),
+Group_Status varchar2(35),
+Since Date,
+Group_Type varchar2(35),
+AUTH_STAT CHAR(1) DEFAULT 'U',
+RECORD_STAT CHAR(1) DEFAULT 'O',
+MOD_NO NUMBER (4,0),
+CHECKER_DT_STAMP DATE,
+ONCE_AUTH CHAR(1)  DEFAULT 'N',
+MAKER_ID VARCHAR2(12),
+MAKER_DT_STAMP  DATE,
+CHECKER_ID VARCHAR2(12),
+CONSTRAINT PX_STB_MASTER_SUSH1 PRIMARY KEY (Group_code)
+
+);

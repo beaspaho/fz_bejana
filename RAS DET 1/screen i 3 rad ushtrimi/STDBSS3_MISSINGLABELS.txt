@@ -1,4 +1,0 @@
-No Maintenance For Label Codes..
----------------------------------------------------------------------------------------------------------------
-LBL_FIELD_DES
-LBL_MANDATORY_VALIDATION
