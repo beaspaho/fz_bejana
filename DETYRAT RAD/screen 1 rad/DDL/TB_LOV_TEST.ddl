@@ -1,0 +1,7 @@
+CREATE TABLE TB_LOV_FIELD (
+TB_ID NUMBER,
+Exposure_category varchar2(35),
+des varchar2(666),
+CONSTRAINT PX_TB_LOV_FIELD PRIMARY KEY (TB_ID)
+
+);

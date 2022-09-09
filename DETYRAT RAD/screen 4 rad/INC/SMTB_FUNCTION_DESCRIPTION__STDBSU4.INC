@@ -1,25 +1,23 @@
-delete from SMTB_FUNCTION_DESCRIPTION where FUNCTION_ID = 'STDUSH2';
-delete from SMTB_FUNCTION_DESCRIPTION where FUNCTION_ID = 'STSUSH2';
 INSERT INTO SMTB_FUNCTION_DESCRIPTION(LANG_CODE,FUNCTION_ID,MAIN_MENU,SUB_MENU_1,SUB_MENU_2,BALOON_HELP,BRANCH_MODULE,BRANCH_PARENT_TASK,DESCRIPTION,RAD_FUNCTION_ID) VALUES(
 'ENG',
-'STDUSH2',
-'Stdush2_Main_Menu',
-'Stdush2_Sub_Menu_1',
-'Stdush2_Sub_Menu_2',
+'STDBSU4',
+'Stdbsu4_Main_Menu',
+'Stdbsu4_Sub_Menu_1',
+'Stdbsu4_Sub_Menu_2',
 NULL,
 NULL,
 NULL,
-'Relationship Maintanance',
-'STDUSH2');
+'Customer Account Mantain',
+'STDBSU4');
 INSERT INTO SMTB_FUNCTION_DESCRIPTION(LANG_CODE,FUNCTION_ID,MAIN_MENU,SUB_MENU_1,SUB_MENU_2,BALOON_HELP,BRANCH_MODULE,BRANCH_PARENT_TASK,DESCRIPTION,RAD_FUNCTION_ID) VALUES(
 'ENG',
-'STSUSH2',
-'Stsush2_Main_Menu',
-'Stsush2_Sub_Menu_1',
-'Stsush2_Sub_Menu_2',
+'STSBSU4',
+'Stsbsu4_Main_Menu',
+'Stsbsu4_Sub_Menu_1',
+'Stsbsu4_Sub_Menu_2',
 NULL,
 NULL,
 NULL,
-'Relationship Maintanance',
-'STDUSH2');
+'Customer Account Mantain',
+'STDBSU4');
 COMMIT;
