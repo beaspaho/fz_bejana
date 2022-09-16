@@ -23,9 +23,7 @@ public class AccountEntity implements Serializable {
     private Long entity_number;
 
 
-    //@ManyToOne
-    //@JoinColumn(name = "entity_number")
-   // private entity entity ;
+
 
     public AccountEntity() {
     }
@@ -35,7 +33,7 @@ public class AccountEntity implements Serializable {
         this.no = no;
         this.sum= sum;
         this.ccy = ccy;
-      //  this.entity = entity;
+
     }
 
     public Long getCid() {

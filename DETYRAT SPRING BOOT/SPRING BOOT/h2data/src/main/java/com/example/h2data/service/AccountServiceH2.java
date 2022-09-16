@@ -18,13 +18,7 @@ import java.util.UUID;
 public class AccountServiceH2 implements AccountDaoH2 {
     @Autowired
     private RepositoryAccount ACCOUNT;
-  //  public AccountServiceH2(RepositoryAccount accountRepository){
 
-      //  this.ACCOUNT = accountRepository;
-   // }
-   // public AccountEntity getAccount(int accountNumber){
-        //return ACCOUNT.findAccount(accountNumber);
- //   }
     @Override
 
     public AccountEntity createAccount(AccountEntity accountEntity) {

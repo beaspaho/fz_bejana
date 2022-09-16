@@ -1,11 +1,11 @@
 package com.example.h2data.service;
 
 import com.example.h2data.RepositoryC.RepositoryClient;
-import com.example.h2data.dao.ClientDao;
+
 import com.example.h2data.dao.ClientDaoH2;
 import com.example.h2data.datasource.AccountEntity;
 import com.example.h2data.datasource.entity;
-import com.example.h2data.model.Client;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
 import org.springframework.stereotype.Service;
@@ -22,7 +22,7 @@ public class ClientServiceH2 implements ClientDaoH2 {
 private RepositoryClient Client;
     @Override
     public entity createClient(entity client) {
-//Client.save(client.setAccount(););
+
         return Client.save(client);
     }
 

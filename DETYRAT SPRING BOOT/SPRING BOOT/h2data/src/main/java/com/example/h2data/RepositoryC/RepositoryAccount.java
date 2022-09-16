@@ -11,9 +11,6 @@ import java.util.UUID;
 import org.springframework.data.domain.Sort;
 import java.util.List;
 public interface RepositoryAccount extends JpaRepository<AccountEntity, Long> {
-  //  @Query("select a from AccountEntity a where a.no= entity.number")
 
- //  public AccountEntity findAccount(int no);
-
-  // List<AccountEntity> findByEntity(entity entity, Sort sort);
 }
+

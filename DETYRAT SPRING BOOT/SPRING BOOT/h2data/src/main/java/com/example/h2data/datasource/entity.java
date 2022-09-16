@@ -1,6 +1,6 @@
 package com.example.h2data.datasource;
 
-import com.example.h2data.model.Account;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

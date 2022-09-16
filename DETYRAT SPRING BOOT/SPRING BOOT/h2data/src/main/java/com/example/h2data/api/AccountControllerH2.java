@@ -21,10 +21,7 @@ public class AccountControllerH2 {
         this.accountServiceH2 = accountService;
     }
 
-   // @GetMapping(path = "/accounts/{accountNumber}")
-    //public AccountEntity getAccount(@PathVariable("accountNumber") int accountNumber) {
-     //   return accountServiceH2.getAccount(accountNumber);
-   // }
+
 
     @GetMapping("/ACCOUNT")
     public ResponseEntity<List<AccountEntity>> getAllClient(){
