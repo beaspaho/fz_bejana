@@ -34,9 +34,9 @@ public class ClientApiH2 {
         client.setNumber(Cid);
         return ResponseEntity.ok().body(this.clientServiceH2.updateClient(client));
     }
-    @DeleteMapping("/CLIENT/{Cid}")
-    public ResponseEntity<?> delete (@PathVariable Long CID){
+    @DeleteMapping("/CLIENT/{CID}")
+    public HttpStatus delete (@PathVariable Long CID){
         this.clientServiceH2.deleteClient(CID);
-        return (ResponseEntity<?>) ResponseEntity.status(HttpStatus.OK);
+        return HttpStatus.OK;
     }
 }

@@ -44,9 +44,9 @@ public class AccountControllerH2 {
         client.setCid(Cid);
         return ResponseEntity.ok().body(this.accountServiceH2.updateAccount(client));
     }
-    @DeleteMapping("/ACCOUNT/{Cid}")
-    public ResponseEntity<?> delete (@PathVariable Long CID){
+    @DeleteMapping("/ACCOUNT/{CID}")
+    public HttpStatus delete (@PathVariable Long CID){
         this.accountServiceH2.deleteClient(CID);
-        return (ResponseEntity<?>) ResponseEntity.status(HttpStatus.OK);
+        return HttpStatus.OK;
     }
 }
