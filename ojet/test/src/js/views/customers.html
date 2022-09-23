@@ -1,0 +1,100 @@
+<!--
+ Copyright (c) 2014, 2022, Oracle and/or its affiliates.
+ Licensed under The Universal Permissive License (UPL), Version 1.0
+ as shown at https://oss.oracle.com/licenses/upl/
+ -->
+ <oj-form-layout
+ id="formLayoutOptions"
+ max-columns="1"
+ direction="column"
+ user-assistance-density="compact">
+
+  <oj-input-text
+ id="text-input"
+ value="{{value}}"
+ label-hint="Emer"
+ length.max="36"
+ label-edge="inside"></oj-input-text>
+
+ <oj-input-text
+ id="text-input"
+ value="{{surname}}"
+ label-hint="Mbiemer"
+ length.max="36"
+ label-edge="inside"></oj-input-text>
+
+ <oj-input-date
+ id="date" 
+ label-hint="Datelindja"
+ value="{{date}}"
+
+></oj-input-date>
+
+<oj-select-single
+id="inputGenderProvider"
+value="{{gjinia}}"
+label-hint="Gjinia"
+label-edge="inside"
+
+data="[[inputGenderProvider]]"
+></oj-select-single>
+
+ <oj-input-number
+ id="text-number"
+ value="{{age}}"
+
+ label-hint="Mosha"
+ label-edge="inside"></oj-input-number>
+
+ <oj-input-text
+ id="text-input"
+ value="{{country}}"
+ label-hint="Vendlindja"
+ label-edge="inside"></oj-input-text>
+
+
+</oj-form-layout>
+<oj-button
+id="button2" on-oj-action="[[IonSaveButtonClick]]"></span slot="startIcon" class="oj-typography-bold">SAVE</span></oj-button>
+
+<oj-table id="table" aria-label='Tabele klienti'
+data="[[dataprovider]]"
+selection-mode='{"row": "multiple", "column": "multiple"}'
+
+scroll-policy='loadMoreOnScroll'
+scroll-policy-options='{"fetchSize": 10}'
+columns='[{"headerText": "Emer", 
+            "field": "emer",
+            "headerClassName": "oj-sm-only-hide",
+             "className": "oj-sm-only-hide",
+             "resizable": "enabled"},
+             {"headerText": "Mbiemer", 
+             "field": "mbiemer",
+             "resizable": "enabled"},
+             {"headerText": "Datelindje", 
+             "field": "datelindje",
+             "headerClassName": "oj-sm-only-hide",
+            "className": "oj-sm-only-hide",
+            "resizable": "enabled"},
+
+            {"headerText": "Gjinia", 
+             "field": "gjinia",
+             "headerClassName": "oj-sm-only-hide",
+            "className": "oj-sm-only-hide",
+            "resizable": "enabled"},
+
+             {"headerText": "Vendlindja", 
+              "field": "vendlindja",
+              "headerClassName": "oj-sm-only-hide",
+              "className": "oj-sm-only-hide",
+              "resizable": "enabled"},
+
+              {"headerText": "Mosha", 
+              "field": "mosha",
+              "headerClassName": "oj-sm-only-hide",
+              "className": "oj-sm-only-hide",
+              "resizable": "enabled"}]'
+style="width: 100%;">
+</oj-table>
+
+
