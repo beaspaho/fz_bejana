@@ -1,0 +1,168 @@
+<!--
+ Copyright (c) 2014, 2022, Oracle and/or its affiliates.
+ Licensed under The Universal Permissive License (UPL), Version 1.0
+ as shown at https://oss.oracle.com/licenses/upl/
+ -->
+
+  <h1>Customers Content Area </h1>
+
+  <div id="sampleDemo" style="" class="demo-padding demo-container">
+    <div id="componentDemoContent" style="width: 1px; min-width: 100%;">
+              
+      
+      
+      <div id="tableDemo" class="oj-flex oj-flex-items-pad">
+          <div class="oj-xl-4 oj-lg-4 oj-md-4 oj-flex-item">
+              <oj-validation-group valid="{{groupValid}}">
+
+
+                  <div class="oj-flex oj-flex-items-pad">
+                      <div class="oj-flex-item deprecated-col-default-width">  
+                        <oj-label id="row2group" label-id="row2grouplabel">First Name:</oj-label>
+                      </div>                      
+                      <div class="oj-flex-item deprecated-col-default-width">                       
+                        <oj-input-text id="input-first-name" length.max="35" length.count-by="codeUnit"   value="{{inputFirstName}}"   required label-hint=" "  >
+                        </oj-input-text>                       
+                        </div>
+                  </div>    
+                  
+                  
+                  <div class="oj-flex oj-flex-items-pad">
+                      <div class="oj-flex-item deprecated-col-default-width">
+                        <oj-label id="row2group" label-id="row2grouplabel">Last Name:</oj-label>
+                      </div>
+                      <div class="oj-flex-item deprecated-col-default-width">
+                        <oj-input-text id="input-last-name"  length.max="35" length.count-by="codeUnit" value="{{inputLastName}}"   label-hint=" "  >
+                        </oj-input-text>
+                      </div>
+                  </div>             
+
+
+                  <div class="oj-flex oj-flex-items-pad">
+                     <div class="oj-flex-item deprecated-col-default-width">  
+                                   <oj-label id="row2group" label-id="row2grouplabel">Birthday:</oj-label>
+                      </div>
+                     <div class="oj-flex-item deprecated-col-default-width">    
+                       <oj-input-date   id="input-birthday"  value="{{inputBirthday}}" autocomplete="off" label-hint="Birthday" > </oj-input-date>
+                    </div>
+                  </div>    
+                  
+
+                  <div class="oj-flex oj-flex-items-pad">
+                      <div class="oj-flex-item deprecated-col-default-width">
+                        <oj-label id="row2group" label-id="row2grouplabel">Gender:</oj-label>
+                      </div>     
+                       <div class="oj-flex-item deprecated-col-default-width">
+                        
+                        <oj-select-single
+                        id="select1" label-hint=" " 
+                        value="{{selectGenderValue}}"
+                        data="[[inputGender]]">
+                        </oj-select-single> 
+                      </div>
+                   </div>
+           
+                  <div class="oj-flex oj-flex-items-pad">
+                    <div class="oj-flex-item deprecated-col-default-width">
+                     <oj-label id="row2group" label-id="row2grouplabel">Birthplace:</oj-label>
+                    </div>
+                    <div class="oj-flex-item deprecated-col-default-width">
+                      
+                      <oj-input-text id="input-birthPlace"  label-hint=" "   value="{{inputBirthplace}}" >
+                      </oj-input-text>
+                    </div>
+               </div> 
+
+
+
+                <div class="oj-flex oj-flex-items-pad">
+                  <div class="oj-flex-item deprecated-col-default-width">
+                    <oj-label id="row2group" label-id="row2grouplabel">Age:</oj-label>
+                  </div>
+                  <div class="oj-flex-item deprecated-col-default-width">                   
+                    <oj-input-number id="input-age" value="{{inputAge}}"   label-hint=" "   ></oj-input-number>
+                  </div>
+              </div> 
+                
+
+
+
+
+
+
+
+                  <div class="oj-flex oj-flex-items-pad">
+                  <oj-button id='addbutton' on-oj-action='[[addRow]]'>Create</oj-button>         
+              </oj-validation-group>           
+          </div>
+
+          <div id='tableContainer' class='oj-xl-8 oj-lg-8 oj-md-8 oj-flex-item'>
+              <oj-table id="table" aria-label="Departments Table"
+                      data='[[dataprovider]]'
+                      columns-default='{"sortable": "disabled"}' 
+                      columns='[{"headerText": "FirstName", 
+                              "field": "FirstName"},
+                              {"headerText": "LastName", 
+                              "field": "LastName"},
+                              {"headerText": "Birthday", 
+                              "field": "Birthday"},
+                              {"headerText": "Gender", 
+                              "field": "Gender"},
+                              {"headerText": "Birthplace", 
+                              "field": "Birthplace"},
+                              {"headerText": "Age", 
+                              "field": "Age"}
+                              ]'
+
+
+
+                      style='width: 200%; height:200%;'>
+              </oj-table>
+              
+             
+          </div>
+
+
+
+
+            <div>
+         
+          <oj-chart
+              id="pieChart"
+              type="pie"
+              data="[[UserPieDataProvider]]"
+              animation-on-display="auto"
+              animation-on-data-change="auto"
+             >
+              <template slot="itemTemplate" data-oj-as="item">
+                <oj-chart-item
+                  value="[[item.data.value]]"
+                  group-id="[[ [item.data.group] ]]"
+                  series-id="[[item.data.series]]"></oj-chart-item>
+              </template>
+            </oj-chart>
+
+              </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</div>

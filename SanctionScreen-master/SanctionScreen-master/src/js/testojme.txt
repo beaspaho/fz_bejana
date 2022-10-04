@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<matchResponse>
+    <listMatchEntry>
+        <id>11091-HMRC</id>
+        <listName>HMRC</listName>
+        <name>SALAFIST GROUP FOR CALL AND COMBAT</name>
+        <percentage>92.0</percentage>
+        <reqName>all all</reqName>
+    </listMatchEntry>
+    <listMatchEntry>
+        <id>111533-SDN</id>
+        <listName>SDN</listName>
+        <name>ABD ALLAH MOHAMED RAGAB ABDEL RAHMAN</name>
+        <percentage>91.0</percentage>
+        <reqName>all all</reqName>
+    </listMatchEntry>
+    <listMatchEntry>
+        <id>6908402~0-SDN_ALIAS</id>
+        <listName>SDN_ALIAS</listName>
+        <name>ALLIED DEMOCRATIC FORCES</name>
+        <percentage>88.0</percentage>
+        <reqName>all all</reqName>
+    </listMatchEntry>
+    <listMatchEntry>
+        <id>2797951-SDN</id>
+        <listName>SDN</listName>
+        <name>HAMID ABDALLAH AHMAD AL-ALI</name>
+        <percentage>87.0</percentage>
+        <reqName>all all</reqName>
+    </listMatchEntry>
+    <listMatchEntry>
+        <id>111141-EU</id>
+        <listName>EU</listName>
+        <name>ALLAHDAD</name>
+        <percentage>85.0</percentage>
+        <reqName>all all</reqName>
+    </listMatchEntry>
+    <listMatchEntry>
+        <id>1972-HMRC</id>
+        <listName>HMRC</listName>
+        <name>HOSSEIN ALLAHKARAM</name>
+        <percentage>84.0</percentage>
+        <reqName>all all</reqName>
+    </listMatchEntry>
+    <listMatchEntry>
+        <id>11268-HMRC</id>
+        <listName>HMRC</listName>
+        <name>ABULLAH SARA</name>
+        <percentage>83.0</percentage>
+        <reqName>all all</reqName>
+    </listMatchEntry>
+    <listMatchEntry>
+        <id>106560-EU</id>
+        <listName>EU</listName>
+        <name>JUND AL-KHALIFA FI ARD AL- JAZAYER</name>
+        <percentage>82.0</percentage>
+        <reqName>all all</reqName>
+    </listMatchEntry>
+    <listMatchEntry>
+        <id>11256-HMRC</id>
+        <listName>HMRC</listName>
+        <name>ABU ABDULLAH SANTOS</name>
+        <percentage>81.0</percentage>
+        <reqName>all all</reqName>
+    </listMatchEntry>
+    <matchRefNo>13778</matchRefNo>
+    <matched>Y</matched>
+    <reqRefNo>asfasf</reqRefNo>
+</matchResponse>

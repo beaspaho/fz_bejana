@@ -1,0 +1,65 @@
+<!--
+ Copyright (c) 2014, 2022, Oracle and/or its affiliates.
+ Licensed under The Universal Permissive License (UPL), Version 1.0
+ as shown at https://oss.oracle.com/licenses/upl/
+ -->
+<div class="oj-hybrid-padding">
+  <h1>LOG IN</h1>
+</div>
+</br>
+
+<div id="tableDemo" class="oj-flex oj-flex-items-pad">
+  <div class="oj-xl-4 oj-lg-4 oj-md-4 oj-flex-item">
+    <oj-validation-group valid="{{groupValid}}">
+
+
+      <div class="oj-flex oj-flex-items-pad">
+
+        <div
+             class="oj-flex-item deprecated-col-default-width">
+          <oj-input-text id="input-user-name"
+                         length.max="35"
+                         length.count-by="codeUnit"
+                         value="{{inputUserName}}" required
+                         label-hint="Username ">
+          </oj-input-text>
+        </div>
+      </div>
+      <div class="oj-flex oj-flex-items-pad">
+
+        <div
+             class="oj-flex-item deprecated-col-default-width">
+          <oj-input-password id="password"
+                             value="{{inputPassword}}"
+                             label-hint="Password"
+                             mask-icon="visible">
+          </oj-input-password>
+          </oj-form-layout>
+        </div>
+      </div>
+
+      </br>
+
+    </oj-validation-group>
+  </br>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+    <oj-button on-click="[[loadData]]">Log in</oj-button>
+    <br />
+  </div>
+
+
+</div>

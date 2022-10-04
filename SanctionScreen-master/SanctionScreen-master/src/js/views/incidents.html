@@ -1,0 +1,33 @@
+<!--
+ Copyright (c) 2014, 2022, Oracle and/or its affiliates.
+ Licensed under The Universal Permissive License (UPL), Version 1.0
+ as shown at https://oss.oracle.com/licenses/upl/
+ -->
+<div class="oj-hybrid-padding">
+  <h1>Add to Black List</h1>
+</div>
+</br>
+
+  <div id="tableDemo" class="oj-flex oj-flex-items-pad">
+    <div class="oj-xl-4 oj-lg-4 oj-md-4 oj-flex-item">
+        <oj-validation-group id="tracker"valid="{{groupValid}}">
+
+
+            <div class="oj-flex oj-flex-items-pad">
+                <div class="oj-flex-item deprecated-col-default-width">  
+                  <oj-label id="row2group" label-id="row2grouplabel" style="font-size: 30px">Name:</oj-label>
+                </div>                      
+                <div class="oj-flex-item deprecated-col-default-width">                       
+                  <oj-input-text id="input-first-name" length.max="35" length.count-by="codeUnit"   value="{{inputNameToAdd}}"   required  label-hint=" "  >
+                  </oj-input-text>                       
+                  </div>
+            </div>   
+
+            
+        </oj-validation-group>
+        <oj-button on-click="[[loadData]]">ADD</oj-button>
+        <br />
+    </div>
+
+
+</div>
