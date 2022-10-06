@@ -17,31 +17,12 @@ define(['../accUtils', '../appController', 'ojs/ojcore', "ojs/ojbootstrap", 'kno
       var self = this;
       self.inputUserName = ko.observable();
       self.inputPassword = ko.observable();
-
       self.groupValid = ko.observable();
-
-
-      self.selection;
-
-
-
-
       
-
-      // Synchronize the router, causing it to go to its default route
-
-
+      app.test2();
       self.loadData = function () {
-        console.log('Brenda Search1');
-        console.log(self.inputUserName());
-        console.log(self.inputPassword());
         if(self.inputUserName()==='beardo' && self.inputPassword()==='1234'){
         app.test();
-        console.log('Brenda Search');
-          
-
-
-
 
         }
         else{
@@ -50,26 +31,8 @@ define(['../accUtils', '../appController', 'ojs/ojcore', "ojs/ojbootstrap", 'kno
           self.inputPassword(null);
     
         }
-    
-
-
       }
-
-
-
-
-
-
     }
-
-
     return AboutViewModel;
-
-
-    (0, ojbootstrap_1.whenDocumentReady)().then(() => {
-      ko.applyBindings(new ViewModel(), document.getElementById("routing-container"));
-    });
-
   }
-
 );

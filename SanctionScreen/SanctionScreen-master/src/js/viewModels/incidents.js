@@ -13,14 +13,15 @@
 
 
 
-define(['../accUtils', 'ojs/ojcore', 'knockout', 'ojs/ojarraydataprovider', "ojs/ojbufferingdataprovider", 'jquery', 'ojs/ojknockout', 'ojs/ojcollectiontabledatasource', 'ojs/ojformlayout', 'ojs/ojinputtext', 'ojs/ojslider',
+define(['../accUtils', 'ojs/ojcore', 'knockout', 'ojs/ojarraydataprovider', "ojs/ojbufferingdataprovider", 'jquery', '../appController', 'ojs/ojknockout', 'ojs/ojcollectiontabledatasource', 'ojs/ojformlayout', 'ojs/ojinputtext', 'ojs/ojslider',
     'ojs/ojinputnumber', 'ojs/ojbutton', 'ojs/ojtable', 'ojs/ojlabel', 'ojs/ojvalidationgroup',
     'ojs/ojvalidation-number', 'ojs/ojarraytabledatasource'
   ],
-  function (accUtils, oj, ko, ArrayDataProvider, BufferingDataProvider, $) {
+  function (accUtils, oj, ko, ArrayDataProvider, BufferingDataProvider, $,app) {
     function IncidentsViewModel() {
 
 
+      app.test3();
       var self = this;
       self.inputNameToAdd = ko.observable();
       self.groupValid = ko.observable();
@@ -42,18 +43,20 @@ define(['../accUtils', 'ojs/ojcore', 'knockout', 'ojs/ojarraydataprovider', "ojs
       console.log(today);
 
 
+ 
+
 
       self.loadData = function () {
-  
-      
+
+
         const tracker = document.getElementById("tracker");
-        if (tracker.valid !== "valid") {       
+        if (tracker.valid !== "valid") {
           tracker.showMessages();
           tracker.focusOn("@firstInvalidShown");
-          return ;
+          return;
         }
-      
-       
+
+
 
 
         const sanctionReq = {
@@ -87,6 +90,8 @@ define(['../accUtils', 'ojs/ojcore', 'knockout', 'ojs/ojarraydataprovider', "ojs
             // this.responseData = dataObject.matchResponse.listMatchEntry;
             console.log('1');
             console.log(data);
+            alert('Te dhenat u kaluan me sukses!');
+            self.inputNameToAdd(' ');
 
           }
 

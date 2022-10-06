@@ -44,7 +44,7 @@
     <link rel="stylesheet" href="css/app.css" type="text/css"/>
 
   </head>
-  <body class="oj-web-applayout-body">
+  <body class="oj-web-applayout-body" style="background-color: white;" >
     <!-- Template for rendering navigation items shared between nav bar and nav list -->
     <script type="text/html" id="navTemplate">
       <li><a href="#">
@@ -78,7 +78,7 @@
                             selection="{{selection.path}}">
         </oj-navigation-list>
       </oj-drawer-popup>
-      <div id="pageContent" class="oj-web-applayout-page">
+      <div id="pageContent" class="oj-web-applayout-page ">
         <!--
            ** Oracle JET V13.0.0 web application header pattern.
            ** Please see the demos under Cookbook/Patterns/App Shell: Web
@@ -89,21 +89,22 @@
         -->  
         <oj-bind-if test="[[booleanShowNavBar()]]">     
      
-        <header role="banner" class="oj-web-applayout-header">
+        <header role="banner"  style="background-color: #039BE5BF;" class="oj-web-applayout-header ">
           <div class="oj-web-applayout-max-width oj-flex-bar oj-sm-align-items-center">
             <!-- Drawer toggle button -->
             <div class="oj-flex-bar-start oj-md-hide">
+        
               <oj-button id="drawerToggleButton" class="oj-button-lg" on-oj-action="[[toggleDrawer]]" chroming="borderless" display="icons">
                 <span slot="startIcon" class="oj-web-applayout-offcanvas-icon"></span>
                 <span>Application Navigation</span>
               </oj-button>
             </div>
-            <div class="oj-flex-bar-middle oj-sm-align-items-baseline">
-              <span role="img" class="oj-icon demo-oracle-icon" title="Oracle Logo" alt="Oracle Logo"></span>
-              <h1 class="oj-sm-only-hide oj-web-applayout-header-title" title="Application Name"><oj-bind-text value="[[appName]]"></oj-bind-text></h1>
-            </div>
-            <div class="oj-flex-bar-end">
-              <!-- Responsive Toolbar -->
+           <!--- <div class="oj-flex-bar-middle oj-sm-align-items-baseline">
+             <span role="img" class="oj-icon demo-oracle-icon" title="Oracle Logo" alt="Oracle Logo"></span>
+              <h1 class="oj-sm-only-hide oj-web-applayout-header-title" title="Application Name"><oj-bind-text  value="[[appName]]"></oj-bind-text></h1>
+            </div>-->
+        <!--    <div class="oj-flex-bar-end">
+               Responsive Toolbar 
               <oj-toolbar>
                 <oj-menu-button id="userMenu" display="[[smScreen() ? 'icons' : 'all']]" chroming="borderless">
                   <span><oj-bind-text value="[[userLogin]]"></oj-bind-text></span>
@@ -117,14 +118,17 @@
                 </oj-menu-button>
               </oj-toolbar>
             </div>
+-->
           </div>
           <div role="navigation" class="oj-web-applayout-max-width oj-web-applayout-navbar">
             <oj-navigation-list id="navTabBar" class="oj-sm-only-hide oj-md-condense oj-md-justify-content-flex-end"
                                 data="[[navDataProvider]]"
                                 edge="top"
                                 item.renderer="[[KnockoutTemplateUtils.getRenderer('navTemplate', true)]]"
-                                selection="{{selection.path}}">
+                                selection="{{selection.path}}"
+                                style="    float: left; margin-bottom: 1rem;">
             </oj-navigation-list>
+            <oj-button id="log-out-button"  class="oj-button-lg" style=" float:right; font-size: medium; " chroming="borderless" display="icons" on-oj-action="[[test1]]">Log out</oj-button>
           </div>
         </header>
       </oj-bind-if>
@@ -148,7 +152,7 @@
             </ul>
           </div>
           <div class="oj-web-applayout-footer-item oj-web-applayout-max-width oj-text-color-secondary oj-typography-body-sm">
-            Copyright © 2014, 2022 Oracle and/or its affiliates All rights reserved.
+            Copyright © Facilization 2022. All Rights Reserved.
           </div>
         </footer>
       </div>

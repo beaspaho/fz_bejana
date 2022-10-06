@@ -10,30 +10,27 @@
  */
 
 
-define(['../accUtils', 'ojs/ojcore', 'knockout', 'ojs/ojarraydataprovider', "ojs/ojbufferingdataprovider", 'jquery', 'ojs/ojknockout', 'ojs/ojcollectiontabledatasource', 'ojs/ojformlayout', 'ojs/ojinputtext', 'ojs/ojslider',
+define(['../accUtils', 'ojs/ojcore', 'knockout', 'ojs/ojarraydataprovider', "ojs/ojbufferingdataprovider", 'jquery', '../appController', 'ojs/ojknockout', 'ojs/ojcollectiontabledatasource', 'ojs/ojformlayout', 'ojs/ojinputtext', 'ojs/ojslider',
     'ojs/ojinputnumber', 'ojs/ojbutton', 'ojs/ojtable', 'ojs/ojlabel', 'ojs/ojvalidationgroup',
     'ojs/ojvalidation-number', 'ojs/ojarraytabledatasource'
   ],
-  function (accUtils, oj, ko, ArrayDataProvider, BufferingDataProvider, $) {
+  function (accUtils, oj, ko, ArrayDataProvider, BufferingDataProvider, $, app) {
 
 
     function DashboardViewModel() {
 
 
+      app.test3();
 
       this.dept = ko.observableArray();
-      // this.name = ko.observable();
-      // this.percantage = ko.observable();
-      // this.similarity = ko.observable();
       var xmlData;
-
       this.groupValid = ko.observable();
       this.inputNameToCheck = ko.observable();
       this.inputSimilarity = ko.observable();
       this.value = ko.observable(50);
       this.sliderMessages = ko.observableArray([]);
       this.inputNumberOfRecords = ko.observable(1);
-      var deptArray = [{
+     /* var deptArray = [{
         'id': '11091-HMRC',
         'listName': 'HMRC',
         'name': 'SALAFIST GROUP FOR CALL AND COMBAT',
@@ -48,7 +45,7 @@ define(['../accUtils', 'ojs/ojcore', 'knockout', 'ojs/ojarraydataprovider', "ojs
       this.isEmptyTable = ko.computed(function () {
         return this.deptObservableArray().length === 0;
       }, this);
-
+*/
 
       this.onValueChange = (event) => {
         this.checkNumber(event.detail.value);
@@ -56,7 +53,7 @@ define(['../accUtils', 'ojs/ojcore', 'knockout', 'ojs/ojarraydataprovider', "ojs
       this.checkNumber = (newValue) => {
         let msgs = [];
         let number = newValue;
-        if (number == 0) {
+        if (number == -1) {
           msgs.push({
             summary: "Number out of range",
             detail: "Number needs to be  0 to 100",
@@ -73,14 +70,14 @@ define(['../accUtils', 'ojs/ojcore', 'knockout', 'ojs/ojarraydataprovider', "ojs
 
 
       self.loadData = function () {
-        
+
         const tracker = document.getElementById("tracker");
-        if (tracker.valid !== "valid") {       
+        if (tracker.valid !== "valid") {
           tracker.showMessages();
           tracker.focusOn("@firstInvalidShown");
-          return ;
+          return;
         }
-      
+
 
         const sanctionReq = {
 
@@ -105,9 +102,9 @@ define(['../accUtils', 'ojs/ojcore', 'knockout', 'ojs/ojarraydataprovider', "ojs
             parser = new DOMParser();
             xmlDoc = parser.parseFromString(data, "text/xml");
             let dataObject = xmlToJson(xmlDoc);
-            //Ketu duhet nje kusht qe nese kapet vetem nje elemetn te kthehet si array jo obj          
-            this.responseData = dataObject.matchResponse.listMatchEntry;
 
+            
+            this.responseData = dataObject.matchResponse.listMatchEntry;
             console.log(this.responseData);
             if (this.responseData == undefined) {
               console.log('S ka te dhena');
@@ -181,7 +178,7 @@ define(['../accUtils', 'ojs/ojcore', 'knockout', 'ojs/ojarraydataprovider', "ojs
 
               }
             }
-            ////
+            
             self.data(tempArray)
           },
           error: function (errMsg) {}
@@ -194,8 +191,6 @@ define(['../accUtils', 'ojs/ojcore', 'knockout', 'ojs/ojarraydataprovider', "ojs
         ));
 
         //----------------------------------------------------------
-
-        console.log("1");
         this.responseData = ko.observableArray([]);
 
         this.dataprovider = new BufferingDataProvider(new ArrayDataProvider(this.responseData, {
@@ -242,17 +237,13 @@ define(['../accUtils', 'ojs/ojcore', 'knockout', 'ojs/ojarraydataprovider', "ojs
         }
         return obj;
       };
-
+/*
       this.connected = () => {
         accUtils.announce('Dashboard page loaded.', 'assertive');
         document.title = "Dashboard";
         // Implement further logic if needed
       };
-
-  
-
-      
-
+      */
 
     }
     return DashboardViewModel;

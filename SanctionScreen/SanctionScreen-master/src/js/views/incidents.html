@@ -13,19 +13,19 @@
         <oj-validation-group id="tracker"valid="{{groupValid}}">
 
 
-            <div class="oj-flex oj-flex-items-pad">
-                <div class="oj-flex-item deprecated-col-default-width">  
-                  <oj-label id="row2group" label-id="row2grouplabel" style="font-size: 30px">Name:</oj-label>
+            <div class="oj-flex oj-sm-flex-items-1">
+                <div class="oj-flex-item oj-sm-padding-2x-horizontal">  
+                  <oj-label id="row2group" label-id="row2grouplabel" style="font-size: 20px">Name:</oj-label>
                 </div>                      
-                <div class="oj-flex-item deprecated-col-default-width">                       
-                  <oj-input-text id="input-first-name" length.max="35" length.count-by="codeUnit"   value="{{inputNameToAdd}}"   required  label-hint=" "  >
+                <div class="oj-flex-item oj-sm-padding-2x-horizontal">                       
+                  <oj-input-text id="input-first-name" length.max="35" length.count-by="codeUnit"  style="width:19vw; min-width: 100%"   value="{{inputNameToAdd}}"   required  label-hint=" "  >
                   </oj-input-text>                       
                   </div>
             </div>   
 
             
         </oj-validation-group>
-        <oj-button on-click="[[loadData]]">ADD</oj-button>
+        <oj-button id="add-button"  style="background-color: #83BB26;" on-click="[[loadData]]" >ADD</oj-button>
         <br />
     </div>
 

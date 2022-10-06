@@ -1,0 +1,164 @@
+<!--
+ Copyright (c) 2014, 2022, Oracle and/or its affiliates.
+ Licensed under The Universal Permissive License (UPL), Version 1.0
+ as shown at https://oss.oracle.com/licenses/upl/
+ BEARDO TEAM
+  <oj-validation-group valid="{{groupValid}}">  </<oj-validation-group>
+ -->
+<div class="oj-hybrid-padding" style="font-weight:normal;">
+  <h1>Sanction Screen</h1>
+  </br>
+
+  <div id="componentDemoContent"
+       style="width: 1px; min-width: 100%;">
+    <div id="container">
+      <div class="demo-flex-display">
+        <oj-validation-group id="tracker"
+                             valid="{{groupValid}}">
+          <oj-form-layout max-columns="1" direction="row"
+                          style="width:1000px; min-width: 100%;"
+                          class="oj-flex oj-flex-items-pad">
+
+            <div class="oj-flex oj-sm-flex-items-1"
+                 style="text-decoration:line-through">
+
+              <div
+                   class="oj-flex-item oj-sm-padding-2x-horizontal">
+                <oj-label id="row2group"
+                          label-id="row2grouplabel"
+                          style="font-size: 20px">Name to check:
+                </oj-label>
+              </div>
+
+
+              <div
+                   class="oj-flex-item oj-sm-padding-8x-horizontal">
+                <oj-input-text id="input-Name-To-Check"
+                               length.max="35"
+                               length.count-by="codeUnit"
+                               style="width: 300px; min-width: 100%"
+                               value="{{inputNameToCheck}}"
+                               required label-hint=" ">
+                </oj-input-text>
+              </div>
+            </div>
+
+<br>
+
+
+            <div class="oj-flex oj-sm-flex-items-1">
+              <div
+                   class="oj-flex-item oj-sm-padding-2x-horizontal">
+                <oj-label id="row2group"
+                          label-id="row2grouplabel"
+                          style="font-size: 20px">
+                  Similarity:
+                </oj-label>
+              </div>
+
+
+              <div
+                   class="oj-flex-item oj-sm-padding-2x-horizontal" >
+
+                <div id="slider-container">
+
+                  <oj-slider id="slider" value="{{value}}"
+                             min="0" max="100"
+                             messages-custom="{{sliderMessages}}"
+                             label-hint=" "
+                             style="width: 329px; min-width: 100%"
+                             label-edge="inside"
+                             help.instruction="Numbers 0-100 are valid"
+                             on-value-changed="[[onValueChange]]">
+                  </oj-slider>
+                  <oj-label  >Value</oj-label>
+                  <span id="value2">
+                    <oj-bind-text value="[[value]]">
+                    </oj-bind-text>
+                  </span>
+                </div>
+              </div>
+            </div>
+<br>
+
+
+
+
+            <div class="oj-flex oj-sm-flex-items-1">
+              <div
+                   class="ooj-flex-item oj-sm-padding-2x-horizontal">
+                <oj-label id="row2group"
+                          label-id="row2grouplabel"
+                          style="font-size: 20px">Number of
+                  records:</oj-label>
+              </div>
+              <div
+                   class="oj-flex-item oj-sm-padding-2x-horizontal">
+                <oj-input-number id="input-number"
+                                 value="{{inputNumberOfRecords}}"
+                                 style="width: 100px"
+                                 label-hint=" ">
+                </oj-input-number>
+              </div>
+            </div>
+
+
+
+
+
+
+   
+      </oj-form-layout>
+      </oj-validation-group>
+    </div>
+    </div>
+  </div>
+  <oj-button id="search-button"
+             style="background-color: #83BB26;"
+             on-click="[[loadData]]">Search</oj-button>
+  <br><br/>
+
+  <div id='tableContainer'
+       class='oj-xl-8 oj-lg-8 oj-md-8 oj-flex-item'>
+    <oj-table id="table" aria-label="Match Response"
+              data='[[dataSource]]'
+              columns-default='{"sortable": "disabled"}'
+              columns='[{"headerText": "Id", 
+                  "field": "id"},
+                  {"headerText": "List Name", 
+                  "field": "listName"},
+                  {"headerText": "Name", 
+                  "field": "name"},
+                  {"headerText": "Percentage", 
+                  "field": "percentage"},
+                  {"headerText": "Required Name", 
+                  "field": "reqName"}
+                  ]'
+              row-renderer="[[oj.KnockoutTemplateUtils.getRenderer('row_template', true)]]"
+              style='width: 100%; height:200%;'>
+    </oj-table>
+    <template id="row_template">
+      <tr>
+        <td data-bind="text: id">
+        </td>
+        <td data-bind="text: listName">
+        </td>
+        <td data-bind="text: name">
+        </td>
+        <td data-bind="text: percentage">
+        </td>
+        <td data-bind="text: reqName">
+        </td>
+      </tr>
+    </template>
+
+
+
+
+
+
+
+  </div>
+
+
+</div>

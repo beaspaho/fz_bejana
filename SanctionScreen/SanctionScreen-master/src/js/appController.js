@@ -64,11 +64,11 @@ define(['knockout', 'ojs/ojcontext', 'ojs/ojmodule-element-utils', 'ojs/ojknocko
         {
           path: 'customers',
           detail: {
-            label: 'Customers',
-            iconClass: 'oj-ux-ico-contact-group'
+            label: 'Attach',
+            iconClass: 'oj-ux-ico-fire'
           }
         }
-
+       
       ];
 
       // Router setup
@@ -83,7 +83,7 @@ define(['knockout', 'ojs/ojcontext', 'ojs/ojmodule-element-utils', 'ojs/ojknocko
 
       // Setup the navDataProvider with the routes, excluding the first redirected
       // route.
-      this.navDataProvider = new ArrayDataProvider(navData.slice(1), {
+      this.navDataProvider = new ArrayDataProvider(navData.slice(2), {
         keyAttributes: "path"
       });
 
@@ -111,33 +111,47 @@ define(['knockout', 'ojs/ojcontext', 'ojs/ojmodule-element-utils', 'ojs/ojknocko
         });
         self.booleanShowNavBar(true);
 
+      };
+      this.test1 = function () {
+        router.go({
+          path: 'about'
+        });
+
+        self.booleanShowNavBar(false);
+
+      };
+      this.test2=function(){
+        self.booleanShowNavBar(false);
+      }
+      this.test3=function(){
+        self.booleanShowNavBar(true);
       }
 
       // Footer
       this.footerLinks = [{
-          name: 'About Oracle',
+          name: 'About Facilization',
           linkId: 'aboutOracle',
-          linkTarget: 'http://www.oracle.com/us/corporate/index.html#menu-about'
+          linkTarget: 'https://www.facilization.com/en/about-us/'
         },
         {
           name: "Contact Us",
           id: "contactUs",
-          linkTarget: "http://www.oracle.com/us/corporate/contact/index.html"
+          linkTarget: "https://www.facilization.com/en/contact/"
         },
         {
-          name: "Legal Notices",
+          name: "Solutions",
           id: "legalNotices",
-          linkTarget: "http://www.oracle.com/us/legal/index.html"
+          linkTarget: "https://www.facilization.com/en/solutions-facilizations/"
         },
         {
-          name: "Terms Of Use",
+          name: "Products",
           id: "termsOfUse",
-          linkTarget: "http://www.oracle.com/us/legal/terms/index.html"
+          linkTarget: "https://www.facilization.com/en/products/"
         },
         {
-          name: "Your Privacy Rights",
+          name: "Services",
           id: "yourPrivacyRights",
-          linkTarget: "http://www.oracle.com/us/legal/privacy/index.html"
+          linkTarget: "https://www.facilization.com/en/services/"
         },
       ];
     }
