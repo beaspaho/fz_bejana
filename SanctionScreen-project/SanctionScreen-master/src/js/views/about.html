@@ -9,15 +9,16 @@
   left: 67%;
   transform: translate(-60%, -60%);
   margin:0vw;width:50vw;">
-  <div class="oj-hybrid-padding" >
+  <div class="oj-hybrid-padding">
 
-    <h1  style="color: #039BE5;">LOG IN</h1>
+    <h1 style="color: #039BE5;">LOG IN</h1>
   </div>
   </br>
 
-  <div id="tableDemo" class="oj-flex oj-flex-items-pad">
+  <div id="tableDemo" class="oj-flex oj-flex-items-pad"
+       >
 
-    <div class="oj-xl-4 oj-lg-4 oj-md-4 oj-flex-item">
+    <div class="oj-xl-4 oj-lg-4 oj-md-4 oj-flex-item" style="position:absolute">
       <oj-validation-group valid="{{groupValid}}">
 
         <div class="oj-flex oj-flex-items-pad">
@@ -49,12 +50,38 @@
         </br>
 
       </oj-validation-group>
+      <div id="containerDiv">
+
+      </div>
       </br>
+
 
       <oj-button id="log-in-button"
                  style="background-color: #83BB26;"
-                 on-click="[[loadData]]">Log in</oj-button>
-      <br />
+                 on-oj-action="[[loadData]]">Log in
+      </oj-button>
+     <br> </br>
+
+
+      <oj-message-banner data="[[personalInformationMessages]]"
+                         type="section"
+                         on-oj-close="[[closePersonalInformationMessage]]">
+      </oj-message-banner>
+      </br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
 
 

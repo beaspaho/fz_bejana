@@ -20,8 +20,8 @@
 
 
 
-define(["exports", "knockout", "ojs/ojbootstrap", "ojs/ojfilepickerutils", 'jquery',  '../appController',"ojs/ojknockout", "ojs/ojfilepicker", 'ojs/ojvalidationgroup', "ojs/ojbutton"],
-  function (exports, ko, ojbootstrap_1, FilePickerUtils, $,app) {
+define(["exports", "knockout", "ojs/ojbootstrap", "ojs/ojfilepickerutils", 'jquery', '../appController', "ojs/ojknockout", "ojs/ojfilepicker", 'ojs/ojvalidationgroup', "ojs/ojbutton", "ojs/ojpopup"],
+  function (exports, ko, ojbootstrap_1, FilePickerUtils, $, app) {
 
 
     function CustomerViewModel() {
@@ -29,13 +29,13 @@ define(["exports", "knockout", "ojs/ojbootstrap", "ojs/ojfilepickerutils", 'jque
 
 
       app.test3();
-
       this.groupValid = ko.observable();
-
+      var checkErrorMessage=0;
       this.fileNames = ko.observableArray([]);
       this.invalidMessage = ko.observable("");
       this.selectListener = (event) => {
         this.invalidMessage("");
+        document.getElementById('valid').style.removeProperty("display");
         const files = event.detail.files;
         this.fileNames(Array.prototype.map.call(files, (file) => {
           return file.name;
@@ -54,28 +54,36 @@ define(["exports", "knockout", "ojs/ojbootstrap", "ojs/ojfilepickerutils", 'jque
             this.invalidMessage("");
           });
         }
+       document.getElementById('invalid').style.removeProperty("display");
       };
       this.beforeSelectListener = (event) => {
+        document.getElementById('valid').style.display="none";
+        document.getElementById('invalid').style.display="none";
+    
         const accept = event.detail.accept;
         const files = event.detail.files;
-        const messages = [];
+       const messages = [];
         let file;
-        const invalidFiles = [];
+       const invalidFiles = [];
         var check = false;
+
 
         //kontrollojm permasat
         for (let i = 0; i < files.length; i++) {
           file = files[i];
           if (file.size > 10000000) {
-            alert('File shume i madh');
+           
             invalidFiles.push(file.name);
             check = true;
+            checkErrorMessage=1;
           }
           if (file.size === 0) {
-            alert('File nuk mund te jete bosh');
+     
             invalidFiles.push(file.name);
             check = true;
+            checkErrorMessage=2;
 
+        
           }
         }
 
@@ -95,15 +103,19 @@ define(["exports", "knockout", "ojs/ojbootstrap", "ojs/ojfilepickerutils", 'jque
           console.log(result);
 
 
+
+
           if (result === 'xml') {
-           
+
             this.fileNames(file.name);
-            alert("File u ngarkua me sukses");
+           
+
           } else {
-            alert('Format jo i duhur');
            
+
             invalidFiles.push(file.name);
-           
+            checkErrorMessage=3;
+
           };
         }
 
@@ -111,12 +123,38 @@ define(["exports", "knockout", "ojs/ojbootstrap", "ojs/ojfilepickerutils", 'jque
           accept(Promise.resolve());
         } else {
           if (invalidFiles.length === 1) {
-            messages.push({
-              severity: "error",
-              summary: "File " +
-                invalidFiles[0] +
-                " jo i pershtatshme",
-            });
+
+
+              if(checkErrorMessage===1){
+                messages.push({
+                  severity: "error",
+                  summary: "File " +
+                    invalidFiles[0] +
+                    " eshte shume i madh",
+                });
+
+              }
+
+              if(checkErrorMessage===2){
+                messages.push({
+                  severity: "error",
+                  summary: "File " +
+                    invalidFiles[0] +
+                    " eshte bosh",
+                });
+              }
+
+              if(checkErrorMessage===3){
+
+                messages.push({
+                  severity: "error",
+                  summary: "File " +
+                    invalidFiles[0] +
+                    " nuk eshte ne formatin e duhur",
+                });
+              }
+  
+          
           } else {
             const fileNames = invalidFiles.join(", ");
             messages.push({
@@ -128,6 +166,8 @@ define(["exports", "knockout", "ojs/ojbootstrap", "ojs/ojfilepickerutils", 'jque
           accept(Promise.reject(messages));
           return 0;
         }
+
+
 
         var formData = new FormData();
         console.log(file);
@@ -144,7 +184,16 @@ define(["exports", "knockout", "ojs/ojbootstrap", "ojs/ojfilepickerutils", 'jque
           }
         });
 
+
+
+
+
+
       }
+
+
+     
+
 
     };
 
